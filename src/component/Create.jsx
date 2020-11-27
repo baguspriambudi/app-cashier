@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 
 const Create = () =>{
     const [username,setUsername] = useState('');
@@ -20,6 +21,7 @@ const Create = () =>{
         <div className="row justify-content-center">
            <div className="col-md-6">
                <div className="card p-4">
+                    <h2>Create Account</h2>
                    <div className="card-body">
                         <div className="form-group">
                             <label>Username</label>
@@ -30,7 +32,8 @@ const Create = () =>{
                             <label>Password</label>
                             <input type='password' placeholder='Password' className="input form-control" value={password} onChange={ChangePassword}></input>
                         </div>
-                        <button className='btn btn-success'>Create</button>
+                        <button className='btn btn-success'>Create</button> { }
+                        <Link to='/' className='btn btn-danger'>Cancel</Link>
                    </div>
                </div>
            </div>

@@ -23,12 +23,12 @@ const Login = ()=>{
                            <div className="card-body">
                                 <div className="form-group">
                                     <label>Username</label>
-                                    <input placeholder='Username' className="input form-control" value={username} onChange={onChangeUsername}></input>
+                                    <input type='text' placeholder='Username' className="input form-control" value={username} onChange={onChangeUsername}></input>
                                 </div>
                                 
                                 <div className="form-group">
                                     <label>Password</label>
-                                    <input placeholder='Password' className="input form-control" value={password} onChangePassword={onChangePassword}></input>
+                                    <input type='password' placeholder='Password' className="input form-control" value={password} onChange={onChangePassword}></input>
                                 </div>
                                 <button className='btn btn-success'>Login</button>
                            </div>

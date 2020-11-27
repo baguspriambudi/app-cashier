@@ -6,15 +6,18 @@ const Create = () =>{
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
     const [alert,setAlert] = useState('');
+    const [error,setError] = useState('');
 
     const ChangeUsername= (val)=>{
         const value = val.target.value
         setUsername(value)
+        setError('')
     }
 
     const ChangePassword= (val)=>{
         const value = val.target.value
         setPassword(value)
+        setError('')
     }
 
     const ClickCreate = () =>{
@@ -22,7 +25,8 @@ const Create = () =>{
            username : username,
            password : password
        }
-      axios.post('https://bootcamp-imogiri.herokuapp.com/api/v1/auth/user/create', data).then(result =>{
+      axios.post('https://bootcamp-imogiri.herokuapp.com/api/v1/auth/user/create', data)
+      .then(result =>{
           if(result){
               if(result.data){
                   setUsername('');
@@ -33,6 +37,12 @@ const Create = () =>{
                   }, 3000)
               }
           }
+      })
+      .catch(e =>{
+        setError(e.response.data.error[0].message);
+        setTimeout(()=>{
+           setError('')
+        }, 3000)
       })
     }
 
@@ -48,6 +58,13 @@ const Create = () =>{
                            alert && (
                             <div className='alert alert-success'>
                                 <p>{alert}</p>
+                            </div>
+                           )
+                       }
+                        {
+                           error && (
+                            <div className='alert alert-danger'>
+                                <p>{error}</p>
                             </div>
                            )
                        }
